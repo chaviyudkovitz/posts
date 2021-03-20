@@ -1,0 +1,16 @@
+ @import '~bootstrap/dist/css/bootstrap';
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    background-size: cover;
+    background-position: center;
+}
+
+h1{
+    text-align: center;
+    background:linear-gradient(120deg, #0cf9e579, #5a83eb8a );
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+}
