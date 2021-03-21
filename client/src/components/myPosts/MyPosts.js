@@ -17,8 +17,8 @@ export default function MyPosts() {
         }
         catch(err){
             alert(err);
-        }
-        }, [isChanged])
+          }
+   }, [isChanged])
 
     async function removePost(postId) {
         try{
@@ -27,16 +27,17 @@ export default function MyPosts() {
     }
     catch(err){
         alert(err);
-    }
+      }
     }
 
     const editPost = async (inputTitle,inputData) => {
         try{       
         await editpost(currentPost._id, inputTitle, inputData);
         setIsChanged(!isChanged);
-     }catch(err){
-         alert(err);
      }
+     catch(err){
+         alert(err);
+      }
     }
 
     const addPost = async (inputTitle, inputData) => {
@@ -53,9 +54,7 @@ export default function MyPosts() {
 
     return (
         <>
-        
             <h1>My Posts</h1>
-
             {postsList ?
                 <>
                     <table className="table">
@@ -71,8 +70,7 @@ export default function MyPosts() {
                         <tbody>                            
                                { postsList.map((post, index) =>
                                     <tr key={index}>
-                                        <td>
-                                                                                   
+                                        <td>                                      
                                             <button class="btn btn-lg  text-left btn-block" 
                                             data-toggle="collapse"
                                              data-target={`#${index}`}
@@ -100,7 +98,6 @@ export default function MyPosts() {
 
                                         <td>
                                             <HandelPostButten
-                                            currentPost={currentPost} 
                                             setCurrentPost={setCurrentPost}
                                              name={'Edit'}
                                              post={post} 
@@ -117,7 +114,6 @@ export default function MyPosts() {
                     </table>
 
                     <HandelPostButten 
-                    setCurrentPost={setCurrentPost}
                     name={'Add'} 
                     handelPost={(inputTitle,inputData)=>addPost(inputTitle,inputData)} 
                     />
