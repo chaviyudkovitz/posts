@@ -45,7 +45,7 @@ export default function Posts() {
                                                 data-target={`#${index}`}
                                                 aria-expanded="true"
                                                 aria-controls="collapseOne"
-                                                onClick={() => { addPost(posts[post]) }}>
+                                                onClick={() => { addPost(post) }}>
                                                 {post.title}
                                             </button>
 
