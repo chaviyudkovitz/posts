@@ -8,8 +8,8 @@ export default function Posts() {
     useEffect(async () => {
         try {
             const result = await fetch('https://jsonplaceholder.typicode.com/posts');
-            const p = await result.json();
-            setPosts(p)
+            const post = await result.json();
+            setPosts(post)
         }
         catch (err) {
             alert(err);
@@ -18,7 +18,7 @@ export default function Posts() {
 
     async function addPost(postToAdd) {
         try {
-            const { post } = await addToMyPost(postToAdd);
+            await addToMyPost(postToAdd);
         }
         catch (err) {
             alert(err);
@@ -34,7 +34,7 @@ export default function Posts() {
 
                     <tbody>
                         {
-                            Object.keys(posts).map((post, index) =>
+                            posts.map((post, index) =>
                                 <tr>
                                     <td key={index}>
 
@@ -46,7 +46,7 @@ export default function Posts() {
                                                 aria-expanded="true"
                                                 aria-controls="collapseOne"
                                                 onClick={() => { addPost(posts[post]) }}>
-                                                {posts[post].title}
+                                                {post.title}
                                             </button>
 
                                             <div id={`${index}`}
@@ -55,7 +55,7 @@ export default function Posts() {
                                                 data-parent="#accordion">
 
                                                 <div class="card-body">
-                                                    {posts[post].body}
+                                                    {post.body}
                                                 </div>
 
                                             </div>
