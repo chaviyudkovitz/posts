@@ -14,7 +14,7 @@ import * as Yup from 'yup'
 import { useHistory, Link } from 'react-router-dom'
 
 const signupSchema = Yup.object().shape({
-    name: Yup.string()
+    userName: Yup.string()
         .required("this field is require"),
     email: Yup.string()
         .required("this field is require")
