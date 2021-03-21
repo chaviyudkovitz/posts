@@ -17,16 +17,6 @@ const  getPostsByUserId = async (req, res) => {
         return res.status(500).json({ err: err.message })
     }
 }
-// const  getPost = async (req, res) => {
-//     const {id} = req.params;
-//     try {
-//         const post = await Post.findById(id)
-//         return res.status(200).json({ post : post })
-//     }
-//     catch (err) {
-//         return res.status(500).json({ err: err.message })
-//     }
-// }
 
 const createAPost = async (req, res) => {
     const { title, body} = req.body;
@@ -45,9 +35,9 @@ const createAPost = async (req, res) => {
         const post = await newPost.save();
          const updatUser =await User.findOneAndUpdate({"_id":user._id},{$push:{posts:post._id}})
          await updatUser.save();
-
         return res.status(200).json({ post : newPost })
-    }
+       }
+        return res.status(200);
     }
     catch (err) {
         return res.status(500).json({ err: err.message })
@@ -59,10 +49,7 @@ const updatePost = async (req, res) => {
     const userId = req.user._id
     try {
        await  Post.findByIdAndUpdate(postId,req.body);
-       
-       
-        return res.status(200).json({ message : "post updated",})
-
+        return res.status(200).json({ message : "post updated",}
     }
     catch (err) {
         return res.status(500).json({ err: err.message })
@@ -75,7 +62,6 @@ const deletePost = async (req, res) => {
     try {
        await User.findByIdAndUpdate(userId,{$pull:{posts:postId}})
        await Post.findByIdAndRemove(postId);
-
        return res.status(200).json({ message : "post deleted",})
     }
     catch (err) {
