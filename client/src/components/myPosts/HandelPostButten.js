@@ -12,7 +12,7 @@ export default function HandelPostButten(props) {
                 class="btn btn-info"
                 data-toggle="modal"
                 data-target={`#r${name}`}
-                onClick={() => setCurrentPost(post)}>{name}
+                onClick={() =>setCurrentPost?setCurrentPost(post):""}>{name}
             </button>
 
             <div class="modal fade"
